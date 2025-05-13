@@ -617,14 +617,14 @@ def run_amendment_logic(find_word, replace_word):
             
         # run_amendment_logic 함수 내의 결과 생성 부분 (전체 함수 중 일부만 수정)
         # 변경된 법률에 대한 개정문 생성 (줄바꿈 개선)
-        if result_lines:
-            prefix = chr(9312 + idx) if idx < 20 else f'({idx + 1})'
-            amendment = f"{prefix} {law_name} 일부를 다음과 같이 개정한다.\n"
-            # 각 개정 규칙마다 줄바꿈 추가
-            amendment += "\n".join(result_lines)
-            amendment_results.append(amendment)
-        else:
-            skipped_laws.append(f"{law_name}: 결과줄이 생성되지 않음")
+         if result_lines:
+             prefix = chr(9312 + idx) if idx < 20 else f'({idx + 1})'
+             amendment = f"{prefix} {law_name} 일부를 다음과 같이 개정한다.\n"
+             # 각 개정 규칙마다 줄바꿈 추가
+             amendment += "\n".join(result_lines)
+             amendment_results.append(amendment)
+         else:
+             skipped_laws.append(f"{law_name}: 결과줄이 생성되지 않음")
 
 # 디버깅 정보 출력
 if skipped_laws:
