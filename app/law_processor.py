@@ -604,7 +604,7 @@ def run_amendment_logic(find_word, replace_word):
                 
             rule_map[rule].extend(sorted(set(locations)))
         
-        # 디버깅: rule_map 내용 출력
+                # 디버깅: rule_map 내용 출력
         print(f"rule_map 항목 수: {len(rule_map)}")
         for rule, locations in rule_map.items():
             print(f"rule: '{rule}', locations: {locations}")
@@ -614,21 +614,21 @@ def run_amendment_logic(find_word, replace_word):
         for rule, locations in rule_map.items():
             loc_str = group_locations(sorted(set(locations)))
             result_lines.append(f"{loc_str} 중 {rule}")
-            
+        
         # run_amendment_logic 함수 내의 결과 생성 부분 (전체 함수 중 일부만 수정)
         # 변경된 법률에 대한 개정문 생성 (줄바꿈 개선)
-         if result_lines:
-             prefix = chr(9312 + idx) if idx < 20 else f'({idx + 1})'
-             amendment = f"{prefix} {law_name} 일부를 다음과 같이 개정한다.\n"
-             # 각 개정 규칙마다 줄바꿈 추가
-             amendment += "\n".join(result_lines)
-             amendment_results.append(amendment)
-         else:
-             skipped_laws.append(f"{law_name}: 결과줄이 생성되지 않음")
+        if result_lines:
+            prefix = chr(9312 + idx) if idx < 20 else f'({idx + 1})'
+            amendment = f"{prefix} {law_name} 일부를 다음과 같이 개정한다.\n"
+            # 각 개정 규칙마다 줄바꿈 추가
+            amendment += "\n".join(result_lines)
+            amendment_results.append(amendment)
+        else:
+            skipped_laws.append(f"{law_name}: 결과줄이 생성되지 않음")
 
-# 디버깅 정보 출력
-if skipped_laws:
-   print("누락된 법률 목록:", skipped_laws)
-        
-# 함수의 리턴문 (함수 마지막에 위치, 들여쓰기 없음)
-return amendment_results if amendment_results else ["⚠️ 개정 대상 조문이 없습니다."]
+    # 디버깅 정보 출력
+    if skipped_laws:
+        print("누락된 법률 목록:", skipped_laws)
+
+    # 함수의 리턴문 (함수 마지막에 위치, 들여쓰기 주의)
+    return amendment_results if amendment_results else ["⚠️ 개정 대상 조문이 없습니다."]
